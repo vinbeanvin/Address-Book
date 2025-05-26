@@ -3,33 +3,30 @@ class Contact:
         self.first_name = first_name
         self.last_name = last_name
         self.address = address
-        self.contact_number = contact_number    #Self ginamit q para madali itype hashaha but it can be anything
+        self.contact_number = contact_number   
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}, {self.address}, {self.contact_number}"
-    # Used str to say na string yung iinput ng user since name siya
-    # Numbers can also be interpreted as string, in the case of contact number
 
 class AddressBook:
     def __init__(self):
         self.contacts = []
-
-# Contact class is for the inputs and addressbook class is the one that updates when a contact is added
+        
     def add_contact(self):
-        if len(self.contacts) < 100:        # Binabalik ng 'len' yung list ng objects
+        if len(self.contacts) < 100:        
             first_name = input("Enter first name: ")
             last_name = input("Enter last name: ")
             address = input("Enter address: ")
             contact_number = input("Enter contact number: ")
             new_contact = Contact(first_name, last_name, address, contact_number)
-            self.contacts.append(new_contact)     # Inaadd ng 'append' yung new_contact sa list ng contacts
+            self.contacts.append(new_contact)     
             print(f"Contact added successfully.")
         else:
             print("Address book is full.")
 
     def edit_contact(self):
         entry_number = int(input("Enter the entry number you want to edit: ")) - 1
-        if 0 <= entry_number < len(self.contacts):   # Chinecheck nito if yung value of entry_number is less than the length ng self.contacts
+        if 0 <= entry_number < len(self.contacts):  
             contact = self.contacts[entry_number]
             print(f"Editing contact: {contact}")
             contact.first_name = input("Enter new first name: ")
@@ -51,8 +48,6 @@ class AddressBook:
     def view_contacts(self):
         for i, contact in enumerate(self.contacts, start=1):
             print(f"{i}. {contact}")
-# 'i' for index. Yung enumerate() function returns both the index (i) and the corresponding value (contact) from the list.
-# Yung start=1 argument naman specifies that the index should start from 1 (instead of the default 0).
 
     def search_contacts(self, query):
         results = []
@@ -72,11 +67,9 @@ class AddressBook:
 if __name__ == "__main__":
     address_book = AddressBook()
 
-    # Adding some random contacts for demonstration
     address_book.contacts.append(Contact("Ralph Andrei", "Castillo", "123 Buklod St.", "099112341234"))
     address_book.contacts.append(Contact("Arthur", "Morgan", "456 Elm St", "8944646"))
-    # KATAMAD N
-
+  
     while True:
         print("\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4. View Contacts\n5. Search Address Book\n6. Exit")
         choice = input("Choose an option: ")
@@ -96,4 +89,3 @@ if __name__ == "__main__":
             break
         else:
             print("Invalid choice. Please select a valid option.")
-# Yep lam m n yn,,,
